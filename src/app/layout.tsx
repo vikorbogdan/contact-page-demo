@@ -6,6 +6,10 @@ import Image from "next/image";
 import SettingsIcon from "@/assets/icons/Settings.svg";
 import AddIcon from "@/assets/icons/Add.svg";
 import DefaultPicture from "@/assets/images/Default.png";
+import Headline1 from "@/components/headlines/Headline1";
+import HighPriorityButton from "@/components/buttons/HighPriorityButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
 
 export const metadata: Metadata = {
   title: "Contact Page",
@@ -23,7 +27,7 @@ export default function RootLayout({
       <body
         className={cn(
           localFonts,
-          "flex items-start justify-center bg-black-100 font-sans text-white-100",
+          "flex items-start justify-center bg-black-100 font-sans text-[14px] tracking-[0.01em] text-white-100",
         )}
       >
         <aside className="mt-24 flex h-24 grow items-center justify-end border-y-[1px] border-black-60 p-6">
@@ -33,9 +37,9 @@ export default function RootLayout({
         </aside>
         <div className="min-h-screen w-full max-w-3xl border-x-[1px] border-black-60 pt-24">
           <header className="flex h-24 items-center justify-between border-y-[1px] border-black-60 p-6">
-            <h1 className="font-display text-3xl">Contacts</h1>
+            <Headline1>Contacts</Headline1>
             <div className="flex items-center gap-8">
-              <Image alt="Settings" width={24} height={24} src={SettingsIcon} />
+              <SecondaryButton icon={SettingsIcon} ariaLabel={"Settings"} />
               <Image
                 className="rounded-full border-[1.5px] border-white-100"
                 alt="Profile Picture"
@@ -44,17 +48,7 @@ export default function RootLayout({
                 src={DefaultPicture}
               />
               <div className="group rounded-full bg-gradient-to-t from-black-20/0 to-black-20 p-[1px]">
-                <button className="rounded-full bg-black-100 bg-gradient-to-t from-black-60 to-black-60/70">
-                  <div className="flex h-full w-full items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 transition-colors group-hover:bg-white-100/[.04]">
-                    <Image
-                      alt="Settings"
-                      width={24}
-                      height={24}
-                      src={AddIcon}
-                    />
-                    <span>Add new</span>
-                  </div>
-                </button>
+                <HighPriorityButton icon={AddIcon} text="Add new" />
               </div>
             </div>
           </header>
