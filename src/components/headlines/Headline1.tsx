@@ -8,7 +8,7 @@ const Headline1 = ({
   return (
     <h1
       className={cn(
-        "font-display text-[32px] font-medium leading-[48px] tracking-normal",
+        "font-display text-base font-medium leading-[48px] tracking-normal md:text-[32px]",
         className,
       )}
     >

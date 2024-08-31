@@ -1,39 +1,35 @@
 import { cn } from "@/utils/cn";
 import Image, { StaticImageData } from "next/image";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
-export type ContextMenuProps = {
+export type DropdownProps = {
   items: { icon: StaticImageData; text: string; onClick: () => void }[];
   className?: string;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };
 
-const ContextMenu = ({
-  items,
-  className,
-  isOpen,
-  setIsOpen,
-}: ContextMenuProps) => {
+const Dropdown = ({ items, className, isOpen, setIsOpen }: DropdownProps) => {
   return (
-    <ul
+    <DropdownMenu.Content
       className={cn(
-        "absolute z-10 flex flex-col overflow-clip rounded-lg bg-black-80",
+        "absolute -left-5 top-2 flex flex-col overflow-clip rounded-lg bg-black-80",
         className,
       )}
     >
       {items.map((item, index) => (
-        <li
+        <DropdownMenu.Item
           key={index}
           onClick={() => {
             setIsOpen(!isOpen);
             item.onClick();
           }}
           className={
-            "flex min-w-52 cursor-pointer gap-3 bg-none px-3 py-[10px] hover:bg-black-70 active:bg-black-60"
+            "flex min-w-52 cursor-pointer select-none gap-3 bg-none px-3 py-[10px] hover:bg-black-70 hover:outline-none active:bg-black-60"
           }
         >
           <Image
-            className="fill-white-56"
+            className="opacity-[.56]"
             aria-hidden
             width={20}
             height={20}
@@ -41,10 +37,10 @@ const ContextMenu = ({
             alt={item.text}
           />
           <div>{item.text}</div>
-        </li>
+        </DropdownMenu.Item>
       ))}
-    </ul>
+    </DropdownMenu.Content>
   );
 };
 
-export default ContextMenu;
+export default Dropdown;
