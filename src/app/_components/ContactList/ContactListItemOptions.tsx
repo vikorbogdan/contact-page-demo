@@ -5,11 +5,11 @@ import FavouriteIcon from "@/assets/icons/Favourite.svg";
 import MoreIcon from "@/assets/icons/More.svg";
 import MuteIcon from "@/assets/icons/Mute.svg";
 import SettingsIcon from "@/assets/icons/Settings.svg";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
+import ButtonWithDropdown from "@/components/ButtonWithDropdown";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
-import SecondaryButton from "../../components/buttons/SecondaryButton";
-import ButtonWithDropdown from "../../components/ButtonWithDropdown";
-import EditContactOverlay from "./EditContactOverlay";
+import EditContactOverlay from "../EditContactOverlay/EditContactOverlay";
 
 const ContactListItemOptions = () => {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);

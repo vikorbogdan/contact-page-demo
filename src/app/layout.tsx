@@ -1,15 +1,16 @@
 import { Glysa, LexendDeca } from "@/assets/fonts";
 import AddIcon from "@/assets/icons/Add.svg";
+import BackArrowIcon from "@/assets/icons/Back arrow.svg";
+import LightModeIcon from "@/assets/icons/Light mode.svg";
 import SettingsIcon from "@/assets/icons/Settings.svg";
 import DefaultPicture from "@/assets/images/Default.png";
 import HighPriorityButton from "@/components/buttons/HighPriorityButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
 import Headline1 from "@/components/headlines/Headline1";
-import BackArrowIcon from "@/assets/icons/Back arrow.svg";
-import LightModeIcon from "@/assets/icons/Light mode.svg";
 import { cn } from "@/utils/cn";
 import type { Metadata } from "next";
 import Image from "next/image";
+import SettingsButtonWithDropdown from "./_components/Header/SettingsButtonWithDropdown";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,14 +32,25 @@ export default function RootLayout({
           "flex items-start justify-center bg-black-100 font-sans text-[14px] tracking-[0.01em] text-white-100",
         )}
       >
-        <aside className="mt-24 flex h-24 grow items-center justify-end border-y-[1px] border-black-60 p-6">
+        <aside className="mt-24 hidden h-24 grow items-center justify-end border-y-[1px] border-black-60 p-6 md:flex">
           <SecondaryButton ariaLabel="Back" icon={BackArrowIcon} />
         </aside>
-        <div className="min-h-screen w-full max-w-3xl border-x-[1px] border-black-60 pt-24">
-          <header className="flex h-24 items-center justify-between border-y-[1px] border-black-60 p-6">
+        <div className="min-h-screen w-full max-w-3xl border-x-[1px] border-black-60 md:pt-24">
+          <header className="flex h-24 items-center border-y-[1px] border-black-60 p-6">
+            <SecondaryButton
+              className="md:hidden"
+              ariaLabel="Back"
+              icon={BackArrowIcon}
+            />
+
             <Headline1>Contacts</Headline1>
-            <div className="flex items-center gap-8">
-              <SecondaryButton icon={SettingsIcon} ariaLabel={"Settings"} />
+            <div className="ml-auto flex items-center gap-8">
+              <SecondaryButton
+                className="hidden md:flex"
+                icon={SettingsIcon}
+                ariaLabel={"Settings"}
+              />
+              <SettingsButtonWithDropdown className="md:hidden" />
               <Image
                 className="rounded-full border-[1.5px] border-white-100"
                 alt="Profile Picture"
@@ -55,7 +67,7 @@ export default function RootLayout({
           </header>
           <main className="px-6 pt-3">{children}</main>
         </div>
-        <aside className="mt-24 flex h-24 grow items-center border-y-[1px] border-black-60 p-6">
+        <aside className="mt-24 hidden h-24 grow items-center border-y-[1px] border-black-60 p-6 md:flex">
           <SecondaryButton icon={LightModeIcon} ariaLabel="Toggle Light Mode" />
         </aside>
       </body>

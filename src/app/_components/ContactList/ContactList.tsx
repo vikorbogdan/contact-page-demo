@@ -1,8 +1,7 @@
-import Image from "next/image";
-import ContactListItemOptions from "./ContactListItemOptions";
 import SarahPicture from "@/assets/images/Sarah.png";
 import TimothyPicture from "@/assets/images/Timothy.png";
 import ProfilePic from "@/components/ProfilePic";
+import ContactListItemOptions from "./ContactListItemOptions";
 const ContactList = () => {
   return (
     <ul className="flex w-full flex-col items-stretch">

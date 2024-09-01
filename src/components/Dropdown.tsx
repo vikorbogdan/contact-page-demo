@@ -13,7 +13,7 @@ const Dropdown = ({ items, className, isOpen, setIsOpen }: DropdownProps) => {
   return (
     <DropdownMenu.Content
       className={cn(
-        "absolute -left-5 top-2 flex flex-col overflow-clip rounded-lg bg-black-80",
+        "absolute -left-48 top-2 flex flex-col overflow-clip rounded-lg bg-black-80 md:-left-5",
         className,
       )}
     >

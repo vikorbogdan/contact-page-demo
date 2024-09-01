@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import Headline2 from "./headlines/Headline2";
-import SecondaryButton from "./buttons/SecondaryButton";
+import { PropsWithChildren } from "react";
 import PrimaryButton from "./buttons/PrimaryButton";
+import SecondaryButton from "./buttons/SecondaryButton";
+import Headline2 from "./headlines/Headline2";
 type OverlayProps = {
   title: string;
   onDone: () => void;

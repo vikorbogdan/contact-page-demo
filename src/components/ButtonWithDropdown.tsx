@@ -1,9 +1,9 @@
 "use client";
+import { cn } from "@/utils/cn";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Dropdown, { DropdownProps } from "./Dropdown";
 import SecondaryButton from "./buttons/SecondaryButton";
 import { ButtonProps } from "./buttons/buttonProps";
-import { cn } from "@/utils/cn";
 
 type ButtonWithDropdownProps = ButtonProps & DropdownProps;
 
@@ -13,17 +13,20 @@ const ButtonWithDropdown = ({
   setIsOpen,
   icon,
   ariaLabel,
+  text,
+  className,
 }: ButtonWithDropdownProps) => {
-  if (!ariaLabel || !icon) return null;
+  if ((!ariaLabel && !text) || !icon) return null;
   return (
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenu.Trigger asChild>
-        <div>
+        <div className={className}>
           <SecondaryButton
             className={cn("relative", {
               "bg-black-80": isOpen,
             })}
             ariaLabel={ariaLabel}
+            text={text}
             icon={icon}
             onClick={() => setIsOpen(!isOpen)}
           />

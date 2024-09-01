@@ -5,7 +5,6 @@ type ProfilePicProps = {
 } & ImageProps;
 
 const ProfilePic = ({ variant, ...props }: ProfilePicProps) => {
-  console.log(variant);
   return (
     <Image
       className="aspect-square rounded-full border-[1px] border-black-60 object-cover"

@@ -1,5 +1,5 @@
 "use client";
-import ChangeIcon from "@/assets/icons/change.svg";
+import ChangeIcon from "@/assets/icons/Change.svg";
 import DeleteIcon from "@/assets/icons/Delete.svg";
 import DefaultPicture from "@/assets/images/Default.png";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
