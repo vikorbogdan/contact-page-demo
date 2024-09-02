@@ -1,14 +1,22 @@
 import ProfilePic from "@/components/ProfilePic";
 import ContactListItemOptions from "./ContactListItemOptions";
 import { Contact } from "@prisma/client";
+import { motion } from "framer-motion";
 
 type ContactListItemProps = {
   contactData: Contact;
 };
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const ContactListItem = ({ contactData }: ContactListItemProps) => {
   return (
-    <li className="group flex gap-4 overflow-hidden py-3">
+    <motion.li
+      variants={itemVariants}
+      className="group flex gap-4 overflow-hidden py-3"
+    >
       <ProfilePic
         variant="small"
         src={contactData.imageUrl ?? ""}
@@ -19,7 +27,7 @@ const ContactListItem = ({ contactData }: ContactListItemProps) => {
         <p className="text-xs text-white-56">{contactData.phone}</p>
       </div>
       <ContactListItemOptions contactData={contactData} />
-    </li>
+    </motion.li>
   );
 };
 
