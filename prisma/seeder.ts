@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/db";
 
 const seedContacts = async () => {
   const colors = ["Blue", "Green", "Purple", "Red", "Yellow"];

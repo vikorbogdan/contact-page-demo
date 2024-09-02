@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { uploadFileToS3 } from "../../_utils/s3Uploader";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/db";
 
 export async function PUT(request: Request) {
   try {
