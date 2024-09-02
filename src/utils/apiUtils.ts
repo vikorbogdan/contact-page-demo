@@ -4,10 +4,17 @@ const API_URL = "/api/contact";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const fetchAPI = async (url: string, options: RequestInit) => {
-  const response = await fetch(url, options);
-  const data = await response.json();
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+  }
 };
 
 export const getAllContacts: () => Promise<{
