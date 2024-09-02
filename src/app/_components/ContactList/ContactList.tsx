@@ -3,7 +3,8 @@ import { unstable_cache } from "next/cache";
 import ContactListItem from "./ContactListItem";
 const ContactList = async () => {
   const getContacts = unstable_cache(getAllContacts, ["contacts"]);
-  const { contacts } = await getContacts();
+  const result = await getContacts();
+  const contacts = result?.contacts || [];
 
   return (
     <ul className="flex w-full flex-col items-stretch">
