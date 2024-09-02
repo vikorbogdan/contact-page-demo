@@ -10,8 +10,17 @@ import ButtonWithDropdown from "@/components/ButtonWithDropdown";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
 import EditContactOverlay from "../EditContactOverlay/EditContactOverlay";
+import { Contact } from "@prisma/client";
+import { deleteContact } from "@/utils/apiUtils";
+import clearCachesByServerAction from "@/app/api/_utils/revalidate";
 
-const ContactListItemOptions = () => {
+type ContactListItemOptionsProps = {
+  contactData: Contact;
+};
+
+const ContactListItemOptions = ({
+  contactData,
+}: ContactListItemOptionsProps) => {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
   const [isEditContactOverlayOpen, setIsEditContactOverlayOpen] =
     useState(false);
@@ -43,11 +52,15 @@ const ContactListItemOptions = () => {
           {
             icon: DeleteIcon,
             text: "Remove",
-            onClick: () => console.log("Remove"),
+            onClick: () => {
+              deleteContact(contactData.id);
+              clearCachesByServerAction(undefined);
+            },
           },
         ]}
       />
       <EditContactOverlay
+        contactData={contactData}
         isOpen={isEditContactOverlayOpen}
         setIsOpen={setIsEditContactOverlayOpen}
       />

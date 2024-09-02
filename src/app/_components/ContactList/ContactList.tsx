@@ -1,30 +1,15 @@
-import SarahPicture from "@/assets/images/Sarah.png";
-import TimothyPicture from "@/assets/images/Timothy.png";
-import ProfilePic from "@/components/ProfilePic";
-import ContactListItemOptions from "./ContactListItemOptions";
-const ContactList = () => {
+import { getAllContacts } from "@/utils/apiUtils";
+import { unstable_cache } from "next/cache";
+import ContactListItem from "./ContactListItem";
+const ContactList = async () => {
+  const getContacts = unstable_cache(getAllContacts, ["contacts"]);
+  const { contacts } = await getContacts();
+
   return (
     <ul className="flex w-full flex-col items-stretch">
-      <li className="group flex gap-4 py-3">
-        <ProfilePic
-          variant="small"
-          src={TimothyPicture}
-          alt="Profile Picture"
-        />
-        <div>
-          <p className="text-base text-white-100">Timothy Lewis</p>
-          <p className="text-xs text-white-56">+36 01 234 5678</p>
-        </div>
-        <ContactListItemOptions />
-      </li>
-      <li className="group flex gap-4 py-3">
-        <ProfilePic variant="small" src={SarahPicture} alt="Profile Picture" />
-        <div>
-          <p className="text-base text-white-100">Sarah Wright</p>
-          <p className="text-xs text-white-56">+36 01 234 5678</p>
-        </div>
-        <ContactListItemOptions />
-      </li>
+      {contacts.map((contact) => (
+        <ContactListItem key={contact.id} contactData={contact} />
+      ))}
     </ul>
   );
 };

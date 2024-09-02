@@ -39,8 +39,6 @@ export async function POST(request: Request) {
       const buffer = Buffer.from(await picture.arrayBuffer());
       imageUrl = await uploadFileToS3(buffer, picture.name, picture.type);
     } else {
-      // Blue, Green, Purple, Red, Yellow are the default profile pictures available, pick one randomly. Also there is gray, simply named "Default.png"
-      // example url: https://contact-demo-app.s3.eu-north-1.amazonaws.com/profilePictures/default/Default_Yellow.png
       const colors = ["", "_Blue", "_Green", "_Purple", "_Red", "_Yellow"];
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       imageUrl = `https://contact-demo-app.s3.eu-north-1.amazonaws.com/profilePictures/default/Default${randomColor}.png`;

@@ -6,17 +6,15 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProfilePic from "@/components/ProfilePic";
 import { useRef } from "react";
 
-type EditContactOverlayPictureFormProps = {
+type AddContactOverlayPictureFormProps = {
   picture: File | undefined;
   setPicture: (picture: File | undefined) => void;
-  imageUrl: string;
 };
 
-const EditContactOverlayPictureForm = ({
+const AddContactOverlayPictureForm = ({
   picture,
   setPicture,
-  imageUrl,
-}: EditContactOverlayPictureFormProps) => {
+}: AddContactOverlayPictureFormProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     setPicture(e.target.files[0]);
@@ -27,7 +25,7 @@ const EditContactOverlayPictureForm = ({
     <div className="flex items-center gap-4">
       <ProfilePic
         variant="big"
-        src={picture ? URL.createObjectURL(picture) : imageUrl}
+        src={picture ? URL.createObjectURL(picture) : DefaultPicture}
         alt="Profile Picture"
       />
       <div className="flex items-center gap-2">
@@ -53,4 +51,4 @@ const EditContactOverlayPictureForm = ({
   );
 };
 
-export default EditContactOverlayPictureForm;
+export default AddContactOverlayPictureForm;

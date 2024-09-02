@@ -1,7 +1,7 @@
 import { formatPhoneNumber } from "@/utils/stringUtils";
 import * as Form from "@radix-ui/react-form";
 
-type EditContactOverlayDataFormProps = {
+type AddContactOverlayDataFormProps = {
   name: string;
   setName: (name: string) => void;
   phoneNumber: string;
@@ -10,14 +10,14 @@ type EditContactOverlayDataFormProps = {
   setEmail: (email: string) => void;
 };
 
-const EditContactOverlayDataForm = ({
+const AddContactOverlayDataForm = ({
   name,
   setName,
   phoneNumber,
   setPhoneNumber,
   email,
   setEmail,
-}: EditContactOverlayDataFormProps) => {
+}: AddContactOverlayDataFormProps) => {
   const handlePhoneNumberInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -76,4 +76,4 @@ const EditContactOverlayDataForm = ({
   );
 };
 
-export default EditContactOverlayDataForm;
+export default AddContactOverlayDataForm;

@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import SettingsButtonWithDropdown from "./_components/Header/SettingsButtonWithDropdown";
 import "./globals.css";
+import AddNewButton from "./_components/AddNewButton";
 
 export const metadata: Metadata = {
   title: "Contact Page",
@@ -58,11 +59,7 @@ export default function RootLayout({
                 height={24}
                 src={DefaultPicture}
               />
-              <HighPriorityButton
-                className="fixed bottom-5 right-5 md:static"
-                icon={AddIcon}
-                text="Add new"
-              />
+              <AddNewButton />
             </div>
           </header>
           <main className="px-6 pt-3">{children}</main>

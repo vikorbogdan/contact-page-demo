@@ -12,15 +12,7 @@ export async function PUT(request: Request) {
     const email = formData.get("email");
     const phone = formData.get("phone");
     const picture = formData.get("picture");
-
-    if (picture) {
-      if (!(picture instanceof File)) {
-        return NextResponse.json(
-          { error: "The data is not a file" },
-          { status: 400 },
-        );
-      }
-
+    if (picture instanceof File) {
       if (!picture.type.startsWith("image/")) {
         return NextResponse.json(
           { error: "The file is not an image" },

@@ -2,6 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { PropsWithChildren } from "react";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SecondaryButton from "./buttons/SecondaryButton";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import Headline2 from "./headlines/Headline2";
 type OverlayProps = {
   title: string;
@@ -22,9 +23,10 @@ const Overlay = ({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-[#000000]/40" />
         <Dialog.Content className="fixed left-1/2 top-1/2 flex w-full max-w-[364px] -translate-x-1/2 -translate-y-1/2 flex-col gap-6 rounded-lg bg-black-100 p-6">
-          <Dialog.Title asChild>
-            <Headline2>{title}</Headline2>
-          </Dialog.Title>
+          <VisuallyHidden.Root>
+            <Dialog.Title>{title}</Dialog.Title>
+          </VisuallyHidden.Root>
+          <Headline2>{title}</Headline2>
           {children}
           <div className="flex w-full justify-end gap-2">
             <Dialog.Close asChild>
