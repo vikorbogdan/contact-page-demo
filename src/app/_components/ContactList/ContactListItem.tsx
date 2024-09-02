@@ -8,7 +8,7 @@ type ContactListItemProps = {
 
 const ContactListItem = ({ contactData }: ContactListItemProps) => {
   return (
-    <li className="group flex gap-4 py-3">
+    <li className="group flex gap-4 overflow-hidden py-3">
       <ProfilePic
         variant="small"
         src={contactData.imageUrl ?? ""}
