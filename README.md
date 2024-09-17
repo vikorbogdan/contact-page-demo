@@ -32,6 +32,7 @@ Clone the `develop` branch of this repository to your local machine:
 
 ````bash
 git clone -b develop https://github.com/vikorbogdan/contact-page-demo.git
+```
 
 ### 2. Install Dependencies
 
